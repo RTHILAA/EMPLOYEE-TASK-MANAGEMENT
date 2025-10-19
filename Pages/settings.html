@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - WorkEase</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Styles are loaded from styles.css -->
+</head>
+<body class="bg-gray-50">
+    <!-- Main Container -->
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-md p-6 flex flex-col">
+            <div class="mb-10">
+                <h1 class="text-2xl font-bold text-primary-600 flex items-center">
+                    <i data-feather="layers" class="mr-2"></i> WorkEase
+                </h1>
+                <p class="text-gray-500 text-sm mt-1">Employee & Task Management</p>
+            </div>
+            
+            <nav class="flex-1">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="index.html" class="sidebar-link flex items-center p-3 text-gray-700">
+                            <i data-feather="home" class="mr-3"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employees.html" class="sidebar-link flex items-center p-3 text-gray-700">
+                            <i data-feather="users" class="mr-3"></i> Employees
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tasks.html" class="sidebar-link flex items-center p-3 text-gray-700">
+                            <i data-feather="check-square" class="mr-3"></i> Tasks
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reports.html" class="sidebar-link flex items-center p-3 text-gray-700">
+                            <i data-feather="bar-chart-2" class="mr-3"></i> Reports
+                        </a>
+                    </li>
+                    <li>
+                        <a href="schedule.html" class="sidebar-link flex items-center p-3 text-gray-700">
+                            <i data-feather="calendar" class="mr-3"></i> Schedule
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html" class="sidebar-link active flex items-center p-3 text-gray-700">
+                            <i data-feather="settings" class="mr-3"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="mt-auto pt-6 border-t border-gray-200">
+                <div class="flex items-center">
+                    <img src="../IMG/profile.jpg" alt="AN initials" class="w-10 h-10 rounded-full" />
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-gray-700">ANASS EL HARAZI</p>
+                        <p class="text-xs text-gray-500">Admin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm z-10">
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center">
+                        <h2 class="text-xl font-semibold text-gray-800">Settings</h2>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="relative p-1 text-gray-500 hover:text-gray-700">
+                            <i data-feather="bell"></i>
+                            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        <button data-modal-target="save-changes" class="bg-primary-500 btn-animated hover:bg-primary-600 text-white px-4 py-2 rounded-lg text-sm">
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Content -->
+            <main class="flex-1 overflow-y-auto p-6 bg-gray-50">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Settings Navigation -->
+                    <div class="bg-white rounded-xl shadow-sm p-2 mb-6 flex flex-wrap" role="tablist" aria-label="Settings Tabs">
+                        <button class="nav-link active px-4 py-2 text-sm font-medium" data-tab="general">General</button>
+                        <button class="nav-link px-4 py-2 text-sm font-medium" data-tab="account">Account</button>
+                        <button class="nav-link px-4 py-2 text-sm font-medium" data-tab="notifications">Notifications</button>
+                        <button class="nav-link px-4 py-2 text-sm font-medium" data-tab="security">Security</button>
+                        <button class="nav-link px-4 py-2 text-sm font-medium" data-tab="integrations">Integrations</button>
+                        <button class="nav-link px-4 py-2 text-sm font-medium" data-tab="billing">Billing</button>
+                    </div>
+
+                    <!-- Settings Content (tab panels) -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <section id="tab-general" class="settings-panel" role="tabpanel">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-6">General Settings</h3>
+
+                            <!-- Company Information -->
+                            <div class="setting-card border border-gray-200 rounded-lg p-6 mb-6">
+                                <h4 class="font-medium text-gray-800 mb-4">Company Information</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                                        <input id="s_companyName" type="text" value="WorkEase Inc." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
+                                        <select id="s_industry" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
+                                            <option>Technology</option>
+                                            <option>Marketing</option>
+                                            <option>Finance</option>
+                                            <option>Healthcare</option>
+                                            <option>Education</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Website</label>
+                                        <input id="s_website" type="text" value="https://taskflowpro.com" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Timezone</label>
+                                        <select id="s_timezone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
+                                            <option>(GMT-05:00) Eastern Time</option>
+                                            <option>(GMT-06:00) Central Time</option>
+                                            <option>(GMT-07:00) Mountain Time</option>
+                                            <option>(GMT-08:00) Pacific Time</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Preferences -->
+                            <div class="setting-card border border-gray-200 rounded-lg p-6 mb-6">
+                                <h4 class="font-medium text-gray-800 mb-4">Preferences</h4>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-gray-800">Dark Mode</p>
+                                            <p class="text-sm text-gray-500">Enable dark theme for the application</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input id="s_darkMode" type="checkbox" class="sr-only peer">
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-500"></div>
+                                        </label>
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-gray-800">Email Notifications</p>
+                                            <p class="text-sm text-gray-500">Receive email notifications for important updates</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input id="s_emailNotifications" type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-500"></div>
+                                        </label>
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-gray-800">Auto-save Tasks</p>
+                                            <p class="text-sm text-gray-500">Automatically save task progress every 5 minutes</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input id="s_autoSave" type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-500"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Task Settings -->
+                            <div class="setting-card border border-gray-200 rounded-lg p-6">
+                                <h4 class="font-medium text-gray-800 mb-4">Task Management</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Default Task Priority</label>
+                                        <select id="s_defaultPriority" class="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
+                                            <option>Low</option>
+                                            <option selected>Medium</option>
+                                            <option>High</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Task Assignment Notification</label>
+                                        <select id="s_assignmentNotification" class="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
+                                            <option>Immediately</option>
+                                            <option>Once Daily</option>
+                                            <option>Once Weekly</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-gray-800">Enable Task Dependencies</p>
+                                            <p class="text-sm text-gray-500">Allow tasks to be dependent on other tasks</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input id="s_enableDependencies" type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-500"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="tab-account" class="settings-panel hidden" role="tabpanel" aria-hidden="true">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-6">Account</h3>
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <label class="block text-sm text-gray-700">Full name</label>
+                                    <input id="a_fullname" class="w-full px-3 py-2 border rounded-lg" value="ANASS EL HARAZI" />
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <label class="block text-sm text-gray-700">Email</label>
+                                    <input id="a_email" type="email" class="w-full px-3 py-2 border rounded-lg" value="admin@taskflowpro.com" />
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <label class="block text-sm text-gray-700">Profile Photo</label>
+                                    <div class="flex items-center space-x-4 mt-2">
+                                        <img id="a_profilePreview" src="../IMG/profile.jpg" class="w-14 h-14 rounded-full" alt="profile" />
+                                        <input id="a_profileFile" type="file" accept="image/*" />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="tab-notifications" class="settings-panel hidden" role="tabpanel" aria-hidden="true">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-6">Notifications</h3>
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <label class="flex items-start space-x-3"><input id="n_emailTask" type="checkbox" class="mt-1" checked /><span>
+                                        <div class="font-medium">Task updates</div>
+                                        <div class="text-sm text-gray-500">Receive updates when a task is assigned or updated</div>
+                                    </span></label>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <label class="flex items-start space-x-3"><input id="n_weeklySummary" type="checkbox" class="mt-1" /><span>
+                                        <div class="font-medium">Weekly summary</div>
+                                        <div class="text-sm text-gray-500">Receive a weekly summary of activity</div>
+                                    </span></label>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="tab-security" class="settings-panel hidden" role="tabpanel" aria-hidden="true">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-6">Security</h3>
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <label class="block text-sm text-gray-700">Change Password</label>
+                                    <input id="sec_password" type="password" class="w-full px-3 py-2 border rounded-lg" placeholder="New password" />
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <label class="flex items-start space-x-3"><input id="sec_2fa" type="checkbox" class="mt-1" /><span>
+                                        <div class="font-medium">Two-factor authentication</div>
+                                        <div class="text-sm text-gray-500">Require 2FA for account sign-ins</div>
+                                    </span></label>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="tab-integrations" class="settings-panel hidden" role="tabpanel" aria-hidden="true">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-6">Integrations</h3>
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-lg p-4 flex items-center justify-between">
+                                    <div>
+                                        <div class="font-medium">Slack</div>
+                                        <div class="text-sm text-gray-500">Connect Slack to receive notifications</div>
+                                    </div>
+                                    <button id="int_slack" class="px-3 py-2 bg-gray-100 rounded">Connect</button>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4 flex items-center justify-between">
+                                    <div>
+                                        <div class="font-medium">Google Calendar</div>
+                                        <div class="text-sm text-gray-500">Sync events to Google Calendar</div>
+                                    </div>
+                                    <button id="int_gcal" class="px-3 py-2 bg-gray-100 rounded">Connect</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="tab-billing" class="settings-panel hidden" role="tabpanel" aria-hidden="true">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-6">Billing</h3>
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="font-medium">Plan</div>
+                                    <div class="text-sm text-gray-500">Current plan: Pro</div>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <label class="block text-sm text-gray-700">Credit Card</label>
+                                    <input id="b_card" class="w-full px-3 py-2 border rounded-lg" placeholder="**** **** **** 4242" />
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <!-- Feather icons and modular scripts loaded below -->
+    <script src="settings.js"></script>
+    <script src="localStorage.js"></script>
+    <script src="ui-modals.js"></script>
+    <script src="tasks-reports.js"></script>
+    <script src="calendar.js"></script>
+    <script src="utils.js"></script>
+    <script src="main.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html>
