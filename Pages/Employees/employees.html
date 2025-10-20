@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees - WorkEase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Main Container -->
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-md p-6 flex flex-col">
+            <div class="mb-10">
+                <h1 class="text-2xl font-bold text-primary-600 flex items-center">
+                    <i data-feather="layers" class="mr-2"></i> WorkEase
+                </h1>
+                <p class="text-gray-500 text-sm mt-1">Employee & Task Management</p>
+            </div>
+            
+            <nav class="flex-1">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="../index.html" class="sidebar-link flex items-center p-3 text-gray-700">
+                            <i data-feather="home" class="mr-3"></i> Dashboard
+                        </a>
+                    </li>
+                       <li>
+                        <a href="employees.html" class="sidebar-link active flex items-center p-3 text-gray-700">
+                            <i data-feather="users" class="mr-3"></i> Employees
+                        </a>
+                    </li>
+                    <li>
+                         <a href="../Tasks/tasks.html" class="sidebar-link flex items-center p-3 text-gray-700">
+                            <i data-feather="check-square" class="mr-3"></i> Tasks
+                        </a>
+                    </li>
+                   <li>
+                        <a href="../Reports/reports.html" class="sidebar-link flex items-center p-3 text-gray-700">
+                            <i data-feather="bar-chart-2" class="mr-3"></i> Reports
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Schedules/schedules.html" class="sidebar-link flex items-center p-3 text-gray-700">
+                            <i data-feather="calendar" class="mr-3"></i> Schedules
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Settings/settings.html" class="sidebar-link flex items-center p-3 text-gray-700">
+                            <i data-feather="settings" class="mr-3"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="mt-auto pt-6 border-t border-gray-200">
+                <div class="flex items-center">
+                    <img src="/IMG/profile.jpg" alt="AN initials" class="w-10 h-10 rounded-full" />
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-gray-700">ANASS EL HARAZI</p>
+                        <p class="text-xs text-gray-500">Admin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm z-10">
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center">
+                        <h2 class="text-xl font-semibold text-gray-800">Employees</h2>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="relative p-1 text-gray-500 hover:text-gray-700">
+                            <i data-feather="bell"></i>
+                            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        <div class="relative">
+                            <input type="text" placeholder="Search employees..." data-search-target="#employee-list" class="app-search pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent text-sm">
+                            <i data-feather="search" class="absolute left-3 top-2.5 text-gray-400"></i>
+                        </div>
+                        <button data-modal-target="new-employee" class="bg-primary-500 btn-animated hover:bg-primary-600 text-white px-4 py-2 rounded-lg text-sm flex items-center">
+                            <i data-feather="plus" class="mr-1"></i> Add Employee
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Content -->
+            <main class="flex-1 overflow-y-auto p-6 bg-gray-50">
+                <!-- Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <p class="text-gray-500 text-sm">Total Employees</p>
+                        <p class="text-2xl font-bold" id="total-count">0</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <p class="text-gray-500 text-sm">Active</p>
+                        <p class="text-2xl font-bold" id="active-count">0</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <p class="text-gray-500 text-sm">On Leave</p>
+                        <p class="text-2xl font-bold" id="onleave-count">0</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <p class="text-gray-500 text-sm">New This Month</p>
+                        <p class="text-2xl font-bold" id="new-count">0</p>
+                    </div>
+                </div>
+                
+                <!-- Employee List -->
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-lg font-semibold text-gray-800">All Employees</h3>
+                        <div class="flex space-x-2">
+                            <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300">
+                                <option>All Departments</option>
+                                <option>Engineering</option>
+                                <option>Marketing</option>
+                                <option>Sales</option>
+                                <option>HR</option>
+                            </select>
+                            <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300">
+                                <option>All Status</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                                <option>On Leave</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="employee-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- dynamic employee cards will be rendered here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="localStorage.js"></script>
+    <script src="ui-modals.js"></script>
+    <script src="tasks-reports.js"></script>
+    <script src="calendar.js"></script>
+    <script src="utils.js"></script>
+    <script src="Employees/employees.js"></script>
+    <script src="main.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html>
