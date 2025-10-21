@@ -57,7 +57,6 @@ function initModals(){
             // leave logic for main.js to handle specific targets via openEventModal or other functions
             if(target === 'save-changes'){ openModal({title:'Save Changes', content:'<p class="text-sm text-gray-600">Confirm save?</p>'}); }
             else if(target === 'today'){ openModal({title:'Today', content:'<p class="text-sm text-gray-600">Today quick actions</p>'}); }
-            else if(target === 'new-task'){ if(typeof openTaskModal === 'function') openTaskModal(); }
             else if(target === 'new-employee'){ if(typeof openEmployeeModal === 'function') openEmployeeModal(); }
             else if(target === 'add-event' || target === 'new-event'){ if(typeof openEventModal === 'function') openEventModal(); }
             else { openModal({title: target || 'Modal', content:'<p>Replace this with your content.</p>'}); }
