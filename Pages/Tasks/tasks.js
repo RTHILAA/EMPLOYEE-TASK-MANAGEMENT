@@ -1,6 +1,3 @@
-// tasks.js - complete functionality for tasks page
-
-// Simple storage simulation
 const TaskStore = {
     all: function() {
         const tasks = localStorage.getItem('tasks');
