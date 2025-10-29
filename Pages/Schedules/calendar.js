@@ -11,7 +11,6 @@ function renderSchedule() {
   if (!grid || !upcoming) return;
   const year = calendarState.year || new Date().getFullYear();
 
-  // prepare month names and events
   const mNames = [
     "January",
     "February",

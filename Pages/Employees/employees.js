@@ -1,5 +1,3 @@
-// employees.js - rendering helpers for employees page
-
 function openEmployeeModal(existing) {
     const isEdit = !!existing;
     const form = document.createElement('form');

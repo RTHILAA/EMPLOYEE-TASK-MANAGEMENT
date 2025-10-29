@@ -1,4 +1,3 @@
-// main.js - initialize app features
 document.addEventListener("DOMContentLoaded", function () {
   // icons
   initFeather();
